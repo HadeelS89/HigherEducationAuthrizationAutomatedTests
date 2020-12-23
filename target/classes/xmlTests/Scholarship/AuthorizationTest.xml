@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name=" Sholarship Test" >
+
+
+    <test name="Authorization Test - Chrome">
+        <parameter name="browserType" value="Chrome"></parameter>
+        <classes>
+            <class name="com.qpros.authorization.LoginTest"/>
+        </classes>
+    </test>
+
+<!--    <test name="Authorization Test - Firefox">-->
+<!--        <parameter name="browserType" value="Firefox"></parameter>-->
+
+<!--        <classes>-->
+<!--            <class name="com.qpros.authorization.LoginTest"/>-->
+<!--        </classes>-->
+
+<!--    </test>-->
+</suite>

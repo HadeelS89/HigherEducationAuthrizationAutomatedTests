@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Sample Test Suite" verbose="1" >
+    <listeners>
+        <listener class-name="com.qpros.reporting.Listeners"/>
+
+    </listeners>
+    <test name="Method Test Cases" >
+        <classes>
+            <class name="com.qpros.scholarship.admin.programs.ProgramsTest">
+                <methods>
+                    <include name="createProgram"/>
+                </methods>
+            </class>
+
+            <class name="com.qpros.scholarship.applicant.ApplicantPrograms.ApplicantProgramTest">
+                <methods>
+                    <include name="saveToDrafts"/>
+
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

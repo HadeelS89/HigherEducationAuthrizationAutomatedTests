@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<class>
+    <applicationStatus>
+        <status>New</status>
+    </applicationStatus>
+
+    <applicationStatus2>
+        <status>Documents Verified</status>
+    </applicationStatus2>
+
+    <applicationStatus3>
+        <status>Interview Scheduled</status>
+    </applicationStatus3>
+
+    <applicationStatus4>
+        <status>Under Review</status>
+    </applicationStatus4>
+
+    <applicationStatus5>
+        <status>Pending Activation</status>
+    </applicationStatus5>
+</class>
+
+
