@@ -66,6 +66,12 @@ public class ERActions {
     private WebElement submitButton;
     @FindBy(xpath = "//button[contains(.,'Yes')]")
     private WebElement yetBtnYesNew;
+    @FindBy(id = "Comment")
+    private WebElement commentArea;
+    @FindBy(css = "input[class='btn btn-sm btn-primary'")
+    private List<WebElement> respondToResubmission;
+    @FindBy(css = ".row > .form-control")
+    private WebElement uploadDescription; //Test123
 
 
     public void findProgram(String programName) throws InterruptedException {
@@ -149,7 +155,30 @@ public class ERActions {
 
     }
 
+    public void sendSubmission(String programName) throws Exception {
 
+        ActionsHelper.waitForExistance(getSearchField(), 100);
+        sleep(3000);
+
+        getSearchField().sendKeys(programName);
+        getSearchField().sendKeys(Keys.ENTER);
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getCommentArea(), 70);
+        getCommentArea().sendKeys("ER send submission automation");
+        ActionsHelper.waitForExistance(getUploadIndvReport(), 50);
+        getUploadIndvReport().click();
+
+        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        Thread.sleep(1000);
+        getUploadDescription().sendKeys("MyDescription");
+        ActionsHelper.retryClick(getUploadBtn(), 50);
+        Thread.sleep(2000);
+
+        ActionsHelper.waitForListExistance(getRespondToResubmission(),70);
+        getRespondToResubmission().get(0).click();
+        getYetBtnYesNew().click();
+    }
 
 
 }
