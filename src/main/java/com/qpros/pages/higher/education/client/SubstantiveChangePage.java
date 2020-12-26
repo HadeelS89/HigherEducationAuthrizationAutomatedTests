@@ -228,7 +228,7 @@ public class SubstantiveChangePage {
         getProgramNameEnglish().get(2).sendKeys("عربي اسم Automation " + System.currentTimeMillis() % 100000);
         getProgramNameEnglish().get(3).sendKeys("عربي اسمAutomation  " + System.currentTimeMillis() % 100000);
         ActionsHelper.safeJavaScriptClick(getNextButton());
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         ActionsHelper.scrollTo(getUploadDiv());
         ActionsHelper.safeJavaScriptClick(getUploadDiv());
 

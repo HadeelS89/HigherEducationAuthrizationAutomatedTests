@@ -96,7 +96,6 @@ public class AQACSecretary {
     private List<WebElement> aQACWFButtons;
 
 
-
     public void findProgram(String programName) throws InterruptedException {
 
         Thread.sleep(3000);
@@ -123,7 +122,7 @@ public class AQACSecretary {
         HashMap table = ActionsHelper.getWebColumnIndex("tblAQACApplicationList",
                 2);
         String programId = "";
-        for (int i = 1; i <= table.size()+1; i++) {
+        for (int i = 1; i <= table.size() + 1; i++) {
             programId = (String) table.get(i);
             System.out.println(programId);
             System.out.println("i = " + i);
@@ -153,18 +152,29 @@ public class AQACSecretary {
 
     public void issueNOL() {
 
-ActionsHelper.waitForExistance(getCommentArea(),60);
-getCommentArea().sendKeys("Issue NOL by Automation");
-getAQACWFButtons().get(0).click();
+        ActionsHelper.waitForExistance(getCommentArea(), 60);
+        getCommentArea().sendKeys("Issue NOL by Automation");
+        getAQACWFButtons().get(0).click();
 
-getYetBtnYesNew().click();
+        getYetBtnYesNew().click();
+
+
+    }
+
+    public void issueLOR() {
+
+        ActionsHelper.waitForExistance(getCommentArea(), 60);
+        getCommentArea().sendKeys("Issue NOL by Automation");
+        getAQACWFButtons().get(1).click();
+
+        getYetBtnYesNew().click();
 
 
     }
 
     public void issueNAL() {
 
-        ActionsHelper.waitForExistance(getCommentArea(),60);
+        ActionsHelper.waitForExistance(getCommentArea(), 60);
         getCommentArea().sendKeys("Issue NOL by Automation");
         getAQACWFButtons().get(2).click();
 
@@ -172,8 +182,6 @@ getYetBtnYesNew().click();
 
 
     }
-
-
 
 
 }

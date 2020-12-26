@@ -100,6 +100,8 @@ public class PCActions {
     @FindBy(css = "#externalReviewersTable_length .custom-select")
   //  @FindBy(css="#externalReviewersTable_paginate .paginate_button:nth-child(3) > .page-link")
     private WebElement maximizeListDDl;
+    @FindBy(css="input[class='btn btn-primary']")
+    private List<WebElement> pcReviseButtons;
 
 
     public void findProgram(String programName) throws InterruptedException {
@@ -333,7 +335,7 @@ public class PCActions {
         ActionsHelper.waitForExistance(getCommentArea(), 40);
         getCommentArea().sendKeys("Send Nol without payment to PC");
         ActionsHelper.waitForExistance(getUploadInternalMemo(), 100);
-        getUploadLetter().get(1).click();
+        getUploadLetter().get(0).click();
         getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
         Thread.sleep(2000);
         getUploadDescription().sendKeys("MyDescription");
@@ -345,6 +347,28 @@ public class PCActions {
         getYetBtnYesNew().click();
     }
 
+    public void senBackToAQAC() throws InterruptedException {
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getCommentArea(), 40);
+        getCommentArea().sendKeys("Send to AQAC from PC after revise document");
+
+        ActionsHelper.waitForListExistance(getPcReviseButtons(), 40);
+        getPcReviseButtons().get(1).click();
+
+        getYetBtnYesNew().click();
+    }
+    public void sendToERChairPerson() throws InterruptedException {
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getCommentArea(), 40);
+        getCommentArea().sendKeys("Send to AQAC from PC after revise document");
+
+        ActionsHelper.waitForListExistance(getPcReviseButtons(), 40);
+        getPcReviseButtons().get(2).click();
+
+        getYetBtnYesNew().click();
+    }
     @Test
     public static void main() {
 

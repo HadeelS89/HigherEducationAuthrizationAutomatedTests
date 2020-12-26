@@ -74,6 +74,12 @@ public class HEProgram {
     private List<WebElement> okButton;
     @FindBy(xpath = "//td[6]")
     private WebElement programStatusField;
+    @FindBy(css = "button[class='btn btn-primary ng-star-inserted']")
+    private List<WebElement> reviseButtons;
+    @FindBy(css = "button[class='btn btn-primary']")
+    private List<WebElement> saveButton;
+    @FindBy(xpath = "//button[contains(.,'Yes')]")
+    private WebElement yetBtnYesNew;
 
 
 //css=.swal2-confirm
@@ -87,7 +93,7 @@ public class HEProgram {
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "New Applications");
         ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Program");
-Thread.sleep(5000);
+        Thread.sleep(5000);
 
         ActionsHelper.waitVisibility(getProgramNameEnglish(), 60);
         getProgramNameEnglish().sendKeys("Testapp d" + System.currentTimeMillis() % 100000);
@@ -115,8 +121,8 @@ Thread.sleep(5000);
         ActionsHelper.waitVisibility(getConfirmButton(), 60);
         ActionsHelper.retryClick(getConfirmButton(), 10);
         System.out.println("Trying to click application section");
-        ActionsHelper.waitForListExistance(getOkButton(),40);
-getOkButton().get(0).click();
+        ActionsHelper.waitForListExistance(getOkButton(), 40);
+        getOkButton().get(0).click();
 
 //        ActionsHelper.retryClick(getCloseFeedback(),10);
 //        ActionsHelper.retryClick(getApplicationsSection(),10);
@@ -146,5 +152,29 @@ getOkButton().get(0).click();
         ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
         Thread.sleep(5000);
+    }
+
+
+    public void reviseAndSubmit() throws Exception {
+        Thread.sleep(10000);
+
+        ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
+        Thread.sleep(5000);
+        getReviseButtons().get(0).click();
+
+        ActionsHelper.waitToBeClickable(getUploadDiv(), 60);
+
+        ActionsHelper.retryClick(getUploadDiv(), 30);
+        ActionsHelper.waitForListExistance(getUploadFilePath(), 60);
+        System.out.println("Upload size: " + getUploadFilePath().size());
+        getUploadFilePath().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        getUploadDescription().sendKeys("MyDescription");
+        getUploadButton().click();
+
+        getSaveButton().get(0).click();
+        getYetBtnYesNew().click();
+
+
     }
 }
