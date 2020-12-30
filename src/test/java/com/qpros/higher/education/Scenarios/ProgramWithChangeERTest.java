@@ -247,7 +247,7 @@ public class ProgramWithChangeERTest extends Base {
         //Create program and set configurations and team
         pcActions = new PCActions(driver);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
-        pcActions.fullAccessGivenToPC();
+        pcActions.fullAccessGivenToERChange();
 
     }
     @Test(description = "Submit individual report By ER ",
@@ -308,27 +308,12 @@ public class ProgramWithChangeERTest extends Base {
         pcActions.getOkButton().get(0).click();
         Thread.sleep(2000);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
-        pcActions.requestForJointReport();
-    }
-
-    @Test(description = " Request For Joint Report by PC ",
-            retryAnalyzer = RetryAnalyzer.class,priority = 14)
-    public void requestForJoint() throws Exception {
-        //Login as Program Manager
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
-                "username"),
-                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
-
-        //Create program and set configurations and team
-        pcActions = new PCActions(driver);
-        pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.requestForJointReportForChange();
-
     }
+
 
     @Test(description = "Submit joint report By ER ",
-            retryAnalyzer = RetryAnalyzer.class,priority = 15)
+            retryAnalyzer = RetryAnalyzer.class,priority = 14)
     public void submitJointReport() throws Exception {
 
 

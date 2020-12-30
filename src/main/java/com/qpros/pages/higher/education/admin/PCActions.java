@@ -165,8 +165,8 @@ public class PCActions {
                 ("ERHireEducation", "ER", "Number of ER");
         int numberOfER = Integer.parseInt(ER_numbers);
         System.out.println(numberOfER);
-        ActionsHelper.waitForExistance(getMaximizeListDDl(), 50);
-        getMaximizeListDDl().sendKeys("20");
+
+        getMaximizeListDDl().sendKeys("25");
         HashMap table = ActionsHelper.getWebColumnIndex("externalReviewersTable", 0);
 
 
@@ -175,7 +175,7 @@ public class PCActions {
 
             //read from excel the ER list
             final String ER_List_names = ReadWriteHelper.readFromExcel
-                    ("ERHireEducation", "RequestToChangeER", "NewERSelection");
+                    ("ERHireEducation", sheetName, columnName, 1);
 
             System.out.println("ER names from excel " + ER_List_names);
 
@@ -206,6 +206,8 @@ public class PCActions {
 
 
     }
+
+
 
 
     public void inviteERs() throws InterruptedException {
@@ -240,6 +242,39 @@ public class PCActions {
                 Thread.sleep(3000);
                 ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
                 getFullAccessBtn().get(1).click();
+            } else {
+
+                getFullAccessBtn2().click();
+            }
+
+            Thread.sleep(3000);
+            getYetBtnYesNew().click();
+            Thread.sleep(3000);
+            ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+            //getSelectFirstRecord().click();
+            Thread.sleep(3000);
+        }
+
+
+    }
+    public void fullAccessGivenToERChange() throws Exception {
+
+
+        final String ER_numbers = ReadWriteHelper.readFromExcel
+                ("ERHireEducation", "ER", "Number of ER");
+        int numberOfER = Integer.parseInt(ER_numbers);
+        System.out.println(numberOfER);
+
+        //  HashMap table = ActionsHelper.getWebColumnIndex("externalReviewersTable", 0);
+        for (int j = 0; j <= numberOfER; j++) {
+            ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+            getSelectFirstRecord().click();
+            Thread.sleep(3000);
+            if (!ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true")) {
+               // getExpandButton().get(j - 1).click();
+                Thread.sleep(3000);
+                ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
+                getFullAccessBtn().get(j).click();
             } else {
 
                 getFullAccessBtn2().click();

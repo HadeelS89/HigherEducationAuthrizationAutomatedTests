@@ -191,7 +191,7 @@ public class DDActions {
         }
 
         getCommentChange().sendKeys("Automation Test");
-        ActionsHelper.waitForExistance(getRequestMainChangeBtn(), 30);
+        ActionsHelper.waitForExistance(getRequestMainChangeBtn(), 50);
         getRequestMainChangeBtn().click();
         getYetBtnYesNew().click();
 
