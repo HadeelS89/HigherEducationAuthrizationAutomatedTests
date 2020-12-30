@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Run All Xml Files" verbose="1" >
+    <listeners>
+        <listener class-name="com.qpros.reporting.Listeners"/>
+    </listeners>
+<test name="HE Cases ">
+    <classes>
+    <class name="com.qpros.higher.education.Scenarios.LORChairPersonER"></class>
+        <class name="com.qpros.higher.education.Scenarios.LORAqacER"/>
+        <class name="com.qpros.higher.education.Scenarios.NALWithER"></class>
+        <class name="com.qpros.higher.education.Scenarios.NOLWithER"></class>
+        <class name="com.qpros.higher.education.Scenarios.IssueNOLWithoutERTest"></class>
+        <class name="com.qpros.higher.education.Scenarios.ProgramWithChangeERTest"></class>
+    </classes>
+</test>
+</suite>

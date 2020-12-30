@@ -98,9 +98,9 @@ public class PCActions {
     @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm')]")
     private List<WebElement> sendNOLWithoutPayBtn;
     @FindBy(css = "#externalReviewersTable_length .custom-select")
-  //  @FindBy(css="#externalReviewersTable_paginate .paginate_button:nth-child(3) > .page-link")
+    //  @FindBy(css="#externalReviewersTable_paginate .paginate_button:nth-child(3) > .page-link")
     private WebElement maximizeListDDl;
-    @FindBy(css="input[class='btn btn-primary']")
+    @FindBy(css = "input[class='btn btn-primary']")
     private List<WebElement> pcReviseButtons;
 
 
@@ -165,17 +165,17 @@ public class PCActions {
                 ("ERHireEducation", "ER", "Number of ER");
         int numberOfER = Integer.parseInt(ER_numbers);
         System.out.println(numberOfER);
-
-        getMaximizeListDDl().sendKeys("25");
+        ActionsHelper.waitForExistance(getMaximizeListDDl(), 50);
+        getMaximizeListDDl().sendKeys("20");
         HashMap table = ActionsHelper.getWebColumnIndex("externalReviewersTable", 0);
 
 
         Thread.sleep(3000);
 
-        for (int j = 1; j <= numberOfER; j++) {
+
             //read from excel the ER list
             final String ER_List_names = ReadWriteHelper.readFromExcel
-                    ("ERHireEducation", sheetName, columnName, j);
+                    ("ERHireEducation", "RequestToChangeER", "NewERSelection");
 
             System.out.println("ER names from excel " + ER_List_names);
 
@@ -197,7 +197,7 @@ public class PCActions {
 
 
             }
-        }// end for j
+
 
         ActionsHelper.waitForExistance(getSubmitERList(), 50);
         getSubmitERList().click();
@@ -301,6 +301,25 @@ public class PCActions {
     }
 
 
+
+    public void requestForJointReportForChange() throws InterruptedException {
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getUploadInternalMemo(), 100);
+        getUploadInternalMemo().click();
+        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        Thread.sleep(3000);
+        getUploadBtn().click();
+        getChairpersonField().sendKeys(ReadWriteHelper.readFromExcel("ERHireEducation",
+                "ERList", "ER names", 2));
+
+        getRequestForJointBtn().click();
+
+        getYetBtnYesNew().click();
+
+    }
+
+
     public void approveJointReport() {
 
 
@@ -358,6 +377,7 @@ public class PCActions {
 
         getYetBtnYesNew().click();
     }
+
     public void sendToERChairPerson() throws InterruptedException {
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
         getSelectFirstRecord().click();
@@ -369,6 +389,7 @@ public class PCActions {
 
         getYetBtnYesNew().click();
     }
+
     @Test
     public static void main() {
 
